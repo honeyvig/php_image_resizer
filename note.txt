@@ -1,0 +1,28 @@
+
+
+Use the following code to test if you have GD extension:
+
+<?php
+$testGD = get_extension_funcs("gd"); // Grab function list 
+if (!$testGD){ echo "GD not even installed."; exit; }
+echo"<pre>".print_r($testGD,true)."</pre>";
+
+If you get the message that it's not installed, then check the following steps:
+
+    phpinfo() and look up php.ini path
+    edit php.ini: extension_dir=<path to your extensions>
+    edit php.ini: extension=php_gd2.dll //uncomment or add
+    Restart web server
+    Run the test script again
+
+
+
+=================
+<?php
+    $testGD = get_extension_funcs("gd"); // Grab function list 
+    if (!$testGD){
+        echo "GD not even installed.";
+        phpinfo();  // Display the php configuration for the web server
+        exit;
+    }
+    echo"<pre>".print_r($testGD,true)."</pre>";  //display GD function list
